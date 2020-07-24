@@ -14,11 +14,15 @@
     <br>
     Choose teams:
     <div th:each="team: ${teams}">
-        <p th:text="${team.name}"></p><input type="checkbox" th:field="*{matchup}" th:value="${team.teamid}">
+        <p th:text="${team.name}"></p>
+        <input th:if="${game.matchup.isEmpty()}" type="checkbox" th:field="*{teamIds}" th:value="${team.teamid}"  >
+
+        <input th:unless="${game.matchup.isEmpty()}" type="checkbox" name="teamIds"  th:value="${team.teamid}" th:checked="${#sets.contains(teamIds,team.teamid)}">
 
     </div>
 
     <input type="submit" value="Submit">
+</form>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

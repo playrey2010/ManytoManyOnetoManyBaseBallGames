@@ -13,7 +13,7 @@
     <input type="hidden" th:field="*{playerid}">
     Name: <input type="text" th:field="*{name}">
     <br>
-    <select th:field="*{team}" name="team">
+    <select th:field="*{team.teamid}" name="team">
         <div th:each="team: ${teams}">
         <option th:value="${team.teamid}" th:text="${team.name}"></option>
         </div>
